@@ -1,0 +1,38 @@
+# environment
+.git/*
+env/
+venv/
+.venv
+.venv/
+.env
+
+# cache
+__pycache__/
+*.py[cod]
+
+# apple
+.idea
+.DS_Store
+._.DS_Store
+.AppleDouble
+.LSOverride
+
+*.sublime-project
+*.sublime-workspace
+
+# media and static
+static/*
+posts/static/*
+media/*
+staticfiles/*
+!static/.gitkeep
+!posts/static/.gitkeep
+!media/.gitkeep
+!staticfiles/staticfiles.zip
+
+# db
+db.sqlite3
+
+# other
+dump.json
+.vscode
