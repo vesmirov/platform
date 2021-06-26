@@ -24,11 +24,11 @@ __pycache__/
 static/*
 posts/static/*
 media/*
-staticfiles/*
+projectstatic/*
 !static/.gitkeep
 !posts/static/.gitkeep
 !media/.gitkeep
-!staticfiles/staticfiles.zip
+!projectstatic/bootstrap.zip
 
 # db
 db.sqlite3

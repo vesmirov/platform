@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light" style="background-color: #FFFFFF;">
+  <a class="navbar-brand text-secondary" href="/">VILAGOV BLOG</a>
+
+  <div>{{ weekday }} {{ date }}</div>
+
+  <div class="dropdown">
+    {% if user.is_authenticated %}
+    <button class="btn btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      {{ user.username }}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+      <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
+      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+    </ul>
+    {% else %}
+    <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      unauthorized
+    </button>
+    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+      <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+      <a class="dropdown-item" href="{% url 'signup' %}">Signup</a>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
