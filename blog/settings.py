@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'templatetags',
     'users',
     'notes',
+    'flatpages',
 
     'django.contrib.admin',
     'django.contrib.auth',

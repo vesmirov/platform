@@ -29,7 +29,7 @@ projectstatic/*
 !posts/static/.gitkeep
 !media/.gitkeep
 !projectstatic/bootstrap.zip
-!projectstatic/icons
+!projectstatic/media
 
 # db
 db.sqlite3
