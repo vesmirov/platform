@@ -1,25 +1,41 @@
-<nav class="navbar navbar-light" style="background-color: #FFFFFF;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
   <a class="navbar-brand text-secondary" href="/">VILAGOV BLOG</a>
 
-  <div>{{ weekday }} {{ date }}</div>
-
-  <div class="dropdown">
-    {% if user.is_authenticated %}
-    <button class="btn btn-sm btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      {{ user.username }}
-    </button>
-    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
-      <a class="dropdown-item" href="{% url 'password_change' %}">Change password</a>
-      <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Main page</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About author</a>
+      </li>
+      {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Me</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+            {% if user.is_admin %}
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'new' %}">New note</a></li>
+            {% endif %}
+          </ul>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+        </li>
+      {% endif %}
     </ul>
-    {% else %}
-    <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      unauthorized
-    </button>
-    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
-      <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-      <a class="dropdown-item" href="{% url 'signup' %}">Signup</a>
-    </ul>
-    {% endif %}
   </div>
+  <span class="pr-3">{{ weekday }}</span><span class="navbar-text pr-3">{{ today|date:"d M Y"}}</span>
+  {% if user.is_authenticated %}
+    <span class="px-2 py-1 border border-success rounded-pill">{{ user.get_full_name }}</span>
+  {% endif %}
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 </nav>

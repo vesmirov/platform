@@ -1,0 +1,34 @@
+{% load user_filters %}
+
+<div class="row my-4">
+  <div class="col">
+    {% if user.is_authenticated %} 
+      <div class="card">
+        <form action="{% url 'comment_new' note.id %}" method="post">
+          {% csrf_token %}
+          <div class="card-header">
+            <span class="mr-3">Add a comment</span>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              {{ form.text|addclass:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-primary">Leave a comment</button>
+          </div>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="col">
+    {% for comment in comments %}
+      <div class="card border-dark mb-3">
+        <div class="card-header border-bottom border-dark">{{ comment.author.get_full_name }} on {{comment.published|date:"d M Y \a\t H:i"}}</div>
+        <div class="card-body">
+          <p class="card-text">{{ comment.text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+

@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+
+{% block title %}Note from {{note.published}}{% endblock %}
+
+{% block header %}Note{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card mb-3 mt-1 shadow-sm">
+        <div class="card-header">
+          {% with name=note.author.get_full_name %}
+          <div class="mr-3 d-flex justify-content-between">
+            <div>
+              <span class="pr-3">On {{note.published|date:"d M Y \a\t H:i"}}</span>
+              {% if note.is_edited %}
+                <span class="pr-3 text-muted"><small>edited on {{note.edited|date:"d M Y \a\t H:i"}}</small></span>
+              {% endif %}
+              {% if user.username == note.author.username %}
+                <small><a class="pr-3 text-dark" href="{% url 'note_edit' note.id %}">Edit</a></small>
+                <small><a class="pr-3 text-danger" href="{% url 'note_delete' note.id %}">Delete</a></small>
+              {% endif %}
+            </div>
+            <span class="text-muted">{{ name }}</span>
+          </div>
+          {% endwith %}
+        </div>
+
+        <div class="card-body row">
+          <p class="card-text col border-right">
+            {{ note.text_ru|linebreaksbr }}
+          </p>
+          <p class="card-text text-muted col">
+            {{ note.text_en|linebreaksbr }}
+          </p>
+        </div>
+      </div>
+
+      {% include 'include/comments.html' with form=comment_form comments=note.comments.all %}
+
+    </div>
+  </div>
+{% endblock %}

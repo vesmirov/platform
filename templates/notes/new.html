@@ -1,23 +1,44 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load user_filters %}
 
-{% block title %}Password reset{% endblock %}
+{% block title %}New note{% endblock title %}
 
-{% block header %}Password reset{% endblock header %}
+{% block header %}
+  {% if note %}
+    Edit note
+  {% else %}
+    New note
+  {% endif %}
+{% endblock header %}
 
 {% block content %}
   <div class="row justify-content-center">
     <div class="col-md-8 px-5">
       <div class="card">
-        <div class="card-header">Input your email</div>
+        <div class="card-header">
+          {% if note %}
+            Edit your note
+          {% else %}
+            Add a new note
+          {% endif %}
+        </div>
+
         <div class="card-body">
-          <form method="post">
+          {% if form.errors %}
+            {% for error in form.errors %}
+              <div class="alert alert-danger" role="alert">
+                {{ error|escape }}
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {% for field in form %}    
+
+            {% for field in form %}
               <div class="form-group row" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
                 <label for="{{ field.id_for_label }}" class="col-md-4 col-form-label text-md-right">{{ field.label }}</label>
                 <div class="col-md-6">
-
                   {{ field|addclass:"form-control" }}
 
                   {% if field.help_text %}
@@ -29,7 +50,11 @@
 
             <div class="col-md-6 offset-md-4">              
               <button type="submit" class="btn btn-primary">
-                Send recovery link
+                {% if note %}
+                  Save
+                {% else %}
+                  Publish
+                {% endif %}
               </button>
             </div>
           </form>
