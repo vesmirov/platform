@@ -7,10 +7,19 @@
 {% block header %}{{ title }}{% endblock header %}
 
 {% block content %}
+  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-calendar3 d-none" viewBox="0 0 16 16">
+    <symbol id="person-add-icon" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+      <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+    </symbol>
+    <symbol id="stack-icon" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882l-7.5-4zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0l3.515-1.874zM8 9.433 1.562 6 8 2.567 14.438 6 8 9.433z"/>
+    </symbol>
+  </svg>
 
   <div class="row justify-content-center">
     <div class="col-lg-4 col-sm-7 text-center pb-5">
-      <img width="328" height="532"  src="{% if author %}{% static 'media/photos/author.jpg' %}{% else %}{% static 'media/photos/tech.jpg' %}{% endif %}" class="img-thumbnail" alt="Photo of Evan Vilagov in Prague">
+      <img width="328" height="532"  src="{% if author %}{% static 'media/photos/author.jpg' %}{% else %}{% static 'media/photos/tech.jpg' %}{% endif %}" class="img-thumbnail" alt="{% if author %}Photo of Evan Vilagov in Prague{% else %}Photo of MacBook air 2018 with stickers{% endif %}">
     </div>
     <div class="col-lg-4 col-sm-6">
       <div class="row">
@@ -18,7 +27,10 @@
         <div class="col-12 pb-3">
           <div class="list-group">
             {% for key, value in links.items %}
-              <a href="{{ value }}" class="list-group-item list-group-item-action"><small class="text-muted mr-3">{% if author %}on{% else %}used{% endif %}</small> {{ key }}</a>
+            <a href="{{ value }}" class="list-group-item list-group-item-action d-flex align-items-center align-middle">
+                <svg class="bi flex-shrink-0 mr-3" width="16" height="16" role="img" aria-label="Info:"><use xlink:href="#{% if author %}person-add-icon{% else %}stack-icon{% endif %}"/></svg>
+                {{ key }}
+              </a>
             {% endfor %}
           </div>
         </div>
