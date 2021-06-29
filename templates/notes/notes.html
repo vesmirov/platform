@@ -6,22 +6,22 @@
 
 {% block content %}
   <div class="row justify-content-center">
-    <div class="col-md-10">
+    <div class="col">
       {% for note in page_obj %}
-        <div class="card mb-3 mt-1 shadow-sm">
+        <div class="card mx-3 mb-3 shadow-sm">
           <div class="card-header">
             {% with name=note.author.get_full_name %}  
-              <span class="mr-3">{{ name }}</span><a class="btn btn-sm btn-outline-dark" href="{% url 'note' note.id %}">{{ note.published|date:"d M Y" }}</a>
+              <span class="mr-3">{{ name }}</span><a class="btn btn-sm btn-outline-dark" href="{% url 'note' note.id %}">{{ note.published|date:"d M Y \a\t H:i" }}</a>
             {% endwith %}
           </div>
 
-          <div class="card-body row">
-            <p class="card-text col border-right">
+          <div class="card-body row row-cols-6 row-cols-lg-2">
+            <div class="card-text col-sm-12 col-lg-6 pb-3">
               {{ note.text_ru|linebreaksbr }}
-            </p>
-            <p class="card-text text-muted col">
+            </div>
+            <div class="card-text col-sm-12 col-lg-6 text-muted">
               {{ note.text_en|linebreaksbr }}
-            </p>
+            </div>
           </div>
         </div>
       {% endfor %}
@@ -30,4 +30,5 @@
       {% include 'include/paginator.html' with page=page_obj paginator=paginator%}
     {% endif %}
   </div>
+
 {% endblock content%}

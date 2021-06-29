@@ -2,15 +2,15 @@
 
 {% block title %}Errror 404{% endblock %}
 
-{% blocke header %}404: Page not found{% endblock header %}
+{% blocke header %}403: Forbidden{% endblock header %}
 
 {% block content %}
   <div class="row justify-content-center">
     <div class="col-md-8 px-5">
       <div class="card">
-        <div class="card-header">Page not found</div>
+        <div class="card-header">Forbidden</div>
         <div class="card-body">
-          <p>Incorrect url address.</p>
+          <p>Sorry, you have no rights for this action</p>
           <div class="col-md-6 offset-md-4">
             <a href="{% url 'notes' %}" class="btn btn-primary">Back to main page</a>
           </div>

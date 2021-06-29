@@ -6,15 +6,15 @@
 
 {% block content %}
   <div class="row justify-content-center">
-    <div class="col-md-10">
-      <div class="card mb-3 mt-1 shadow-sm">
+    <div class="col-11">
+      <div class="card mb-4 shadow-sm">
         <div class="card-header">
           {% with name=note.author.get_full_name %}
           <div class="mr-3 d-flex justify-content-between">
             <div>
-              <span class="pr-3">On {{note.published|date:"d M Y \a\t H:i"}}</span>
+              <span class="pr-3">On {{note.published|date:"d.m.Y \a\t H:i"}}</span>
               {% if note.is_edited %}
-                <span class="pr-3 text-muted"><small>edited on {{note.edited|date:"d M Y \a\t H:i"}}</small></span>
+                <span class="pr-3 text-muted"><small>edited: {{note.published|date:"d.m.Y \a\t H:i"}}</small></span>
               {% endif %}
               {% if user.username == note.author.username %}
                 <small><a class="pr-3 text-dark" href="{% url 'note_edit' note.id %}">Edit</a></small>
@@ -26,18 +26,17 @@
           {% endwith %}
         </div>
 
-        <div class="card-body row">
-          <p class="card-text col border-right">
+        <div class="card-body row row-cols-6 row-cols-lg-2">
+          <div class="card-text col-sm-12 col-lg-6 pb-3">
             {{ note.text_ru|linebreaksbr }}
-          </p>
-          <p class="card-text text-muted col">
+          </div>
+          <div class="card-text col-sm-12 col-lg-6 text-muted">
             {{ note.text_en|linebreaksbr }}
-          </p>
+          </div>
         </div>
+        
       </div>
-
       {% include 'include/comments.html' with form=comment_form comments=note.comments.all %}
-
     </div>
   </div>
 {% endblock %}

@@ -1,15 +1,22 @@
-{% extends "base.html" %} 
-{% block title %} Ошибка 500 {% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Errror 404{% endblock %}
+
+{% blocke header %}500: Server error{% endblock header %}
+
 {% block content %}
-
-    <main role="main" class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Ошибка 500</h1>
-            <p class="lead">Ошибка на сервере, попробуйте обновить страницу или обратиться позже</p>
-            <p class="lead"><a href="{% url 'index' %}">Вернуться на главную</a></p>
+  <div class="row justify-content-center">
+    <div class="col-md-8 px-5">
+      <div class="card">
+        <div class="card-header">Server error</div>
+        <div class="card-body">
+          <p>There is something wrong on server.</p>
+          <p>Please, notify author.</p>
+          <div class="col-md-6 offset-md-4">
+            <a href="{% url 'notes' %}" class="btn btn-primary">Back to main page</a>
+          </div>
         </div>
+      </div>
     </div>
-    </main>
-
+  </div>
 {% endblock %}
