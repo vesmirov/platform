@@ -24,12 +24,14 @@ class AuthorPage(TemplateView):
 class TechPage(TemplateView):
     template_name = 'flatpages/about.html'
     extra_context = {
-        'title': 'Stack used',
+        'title': 'Stack',
         'content_title': 'Список использованных технологий',
         'links': {
-            'Python 3': '#',
-            'Django 3.1': '#',
-            'Django REST Framework 3': '#',
-            'PostgreSQL': '#',
+            'Python 3.9.2': 'https://www.python.org/downloads/release/python-392/',  # noqa
+            'Django 3.2.4': 'https://docs.djangoproject.com/en/3.2/releases/3.2.4/', # noqa
+            'Bootsrap 5': 'https://getbootstrap.com/docs/5.0/getting-started/introduction/',  # noqa 
+            'Gunicorn 20.1': 'https://gunicorn.org/',
+            'Nginx': 'https://nginx.org/',
+            'PostgreSQL': 'https://www.postgresql.org/',
         },
     }
