@@ -26,6 +26,6 @@ urlpatterns = [
     path(
         'notes/<int:pk>/comment/<int:comment_pk>/delete/',
         views.CommentDeleteView.as_view(),
-        name='comment_delete'   
+        name='comment_delete'
     ),
 ]

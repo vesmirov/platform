@@ -100,7 +100,7 @@ class CommentDeleteView(LoginRequiredMixin, View):
 
     def dispatch(self, request, *args, **kwargs):
         comment = get_object_or_404(Comment, pk=kwargs['comment_pk'])
-        if (self.request.user == comment.author 
+        if (self.request.user == comment.author
                 or self.request.user.is_superuser):
             return super().dispatch(request, *args, **kwargs)
         raise PermissionDenied()
