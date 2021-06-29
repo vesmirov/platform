@@ -1,5 +1,7 @@
 from django.views.generic.base import TemplateView
 
+from .texts import TEXT_RU, TEXT_EN
+
 
 class AuthorPage(TemplateView):
     template_name = 'flatpages/about.html'
@@ -14,8 +16,8 @@ class AuthorPage(TemplateView):
             'Facebook': 'https://www.facebook.com/vilagov/vilagov',
         },
         'email': 'evan.vilagov@gmail.com',
-        'text_ru': 'Информация об авторе на русском.',
-        'text_en': 'Information about author in English',
+        'text_ru': TEXT_RU,
+        'text_en': TEXT_EN,
     }
 
 

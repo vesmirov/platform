@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.conf.urls import handler404, handler500, handler403
 from django.contrib import admin
-from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import path, include
 
 

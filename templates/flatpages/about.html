@@ -21,14 +21,14 @@
     <div class="col-lg-4 col-sm-7 text-center pb-5">
       <img width="328" height="532"  src="{% if author %}{% static 'media/photos/author.jpg' %}{% else %}{% static 'media/photos/tech.jpg' %}{% endif %}" class="img-thumbnail" alt="{% if author %}Photo of Evan Vilagov in Prague{% else %}Photo of MacBook air 2018 with stickers{% endif %}">
     </div>
-    <div class="col-lg-4 col-sm-6">
+    <div class="col-lg-6 col-sm-8">
       <div class="row">
 
         <div class="col-12 pb-3">
           <div class="list-group">
             {% for key, value in links.items %}
             <a href="{{ value }}" class="list-group-item list-group-item-action d-flex align-items-center align-middle">
-                <svg class="bi flex-shrink-0 mr-3" width="16" height="16" role="img" aria-label="Info:"><use xlink:href="#{% if author %}person-add-icon{% else %}stack-icon{% endif %}"/></svg>
+                <svg class="bi flex-shrink-0 mr-4" width="16" height="16" role="img" aria-label="Info:"><use xlink:href="#{% if author %}person-add-icon{% else %}stack-icon{% endif %}"/></svg>
                 {{ key }}
               </a>
             {% endfor %}
@@ -39,8 +39,8 @@
         <div class="col-12 pb-3">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Об авторе</h5>
-              <p class="card-text">{{ text_ru }}</p>
+              <h5 class="card-title">About author</h5>
+              <p class="card-text">{{ text_en|safe }}</p>
             </div>
           </div>
         </div>
@@ -48,8 +48,8 @@
         <div class="col-12 pb-3">
           <div class="card">
             <div class="card-body text-secondary">
-              <h5 class="card-title">About author</h5>
-              <p class="card-text">{{ text_en }}</p>
+              <h5 class="card-title">Об авторе</h5>
+              <p class="card-text">{{ text_ru|safe }}</p>
             </div>
           </div>
         </div>
