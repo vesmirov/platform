@@ -25,7 +25,7 @@ TEXT_RU = (
 TEXT_EN = (
     "My name is Evan. I was born in Moscow — the most famous and bright city "
     "of Russia.<br><br>"
-    "It’s hard to remember what have I already tried in this life: sport, "
+    "It’s hard to remember what I haven't ever tried in my life: sport, "
     "culinary, mechanics, art, politics, marketing, copywriting, SMM…<br>"
     "The reason for all of this — my curiosity.<br><br>"
     "From my childhood I was driven by desire to know the people around me, "
