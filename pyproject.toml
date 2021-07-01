@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "yatube"
+name = "blog"
 version = "0.1.0"
 description = ""
 authors = ["Evan <evan.vilagov@gmail.com>"]
