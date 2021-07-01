@@ -1,4 +1,4 @@
-name: Vilagov Blog CI
+name: Blog CI
  
 on: [push]
 
