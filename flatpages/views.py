@@ -4,6 +4,8 @@ from .texts import TEXT_RU, TEXT_EN
 
 
 class AuthorPage(TemplateView):
+    """About author page"""
+
     template_name = 'flatpages/about.html'
     extra_context = {
         'author': True,
@@ -13,7 +15,7 @@ class AuthorPage(TemplateView):
             'Github': 'https://www.github.com/vilagov/',
             'Linkedin': 'https://www.linkedin.com/in/vilagov/',
             'Instagram': 'https://www.instagram.com/evan.vilagov/',
-            'Facebook': 'https://www.facebook.com/vilagov/vilagov',
+            'Facebook': 'https://www.facebook.com/vilagov/',
         },
         'email': 'evan.vilagov@gmail.com',
         'text_ru': TEXT_RU,
@@ -22,6 +24,8 @@ class AuthorPage(TemplateView):
 
 
 class TechPage(TemplateView):
+    """Project stack page"""
+
     template_name = 'flatpages/about.html'
     extra_context = {
         'title': 'Stack',

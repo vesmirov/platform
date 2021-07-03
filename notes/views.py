@@ -13,25 +13,31 @@ from django.views.generic import (
     RedirectView,
 )
 
-from .models import Note, Comment
 from .forms import NoteForm, CommentForm
+from .models import Note, Comment
 from .permissions import AdminPermission
 
 User = get_user_model()
 
 
 class IndexView(RedirectView):
-    permanent = True
+    """Main page, which redirects to notes page for now"""
+
+    permanent = False
     url = reverse_lazy('notes')
 
 
 class NoteListView(ListView):
+    """Latest notes"""
+
     model = Note
     template_name = 'notes/notes.html'
     paginate_by = 6
 
 
 class NoteCreateView(LoginRequiredMixin, AdminPermission, CreateView):
+    """Create a new note"""
+
     model = Note
     template_name = 'notes/new.html'
     form_class = NoteForm
@@ -43,6 +49,8 @@ class NoteCreateView(LoginRequiredMixin, AdminPermission, CreateView):
 
 
 class NoteDetailView(LoginRequiredMixin, DetailView):
+    """Detail note with comments"""
+
     model = Note
     template_name = 'notes/note.html'
 
@@ -53,6 +61,8 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
 
 
 class NoteUpdateView(LoginRequiredMixin, AdminPermission, UpdateView):
+    """Edit note"""
+
     model = Note
     template_name = 'notes/new.html'
     form_class = NoteForm
@@ -70,11 +80,15 @@ class NoteUpdateView(LoginRequiredMixin, AdminPermission, UpdateView):
 
 
 class NoteDeleteView(LoginRequiredMixin, AdminPermission, DeleteView):
+    """Delete note"""
+
     model = Note
     success_url = reverse_lazy('notes')
 
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
+    """Add a comment to note"""
+
     model = Comment
     form_class = CommentForm
 
@@ -90,6 +104,8 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
 
 class CommentDeleteView(LoginRequiredMixin, View):
+    """Delete comment"""
+
     def post(self, request, *args, **kwargs):
         dataset = get_object_or_404(Comment, pk=kwargs['comment_pk'])
         dataset.delete()

@@ -22,11 +22,9 @@ __pycache__/
 
 # media and static
 static/*
-posts/static/*
 media/*
 projectstatic/*
 !static/.gitkeep
-!posts/static/.gitkeep
 !media/.gitkeep
 !projectstatic/bootstrap.zip
 !projectstatic/media

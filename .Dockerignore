@@ -5,6 +5,9 @@ venv/
 .venv
 .venv/
 .env
+pyproject.toml
+poetry.lock
+host.conf
 
 # cache
 __pycache__/
@@ -22,11 +25,9 @@ __pycache__/
 
 # media and static
 static/*
-posts/static/*
 media/*
 projectstatic/bootstrap.zip
 !static/.gitkeep
-!posts/static/.gitkeep
 !media/.gitkeep
 
 # db

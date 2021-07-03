@@ -5,6 +5,8 @@ User = get_user_model()
 
 
 class Note(models.Model):
+    """Users notes"""
+
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -26,6 +28,8 @@ class Note(models.Model):
 
 
 class Comment(models.Model):
+    """Comments for notes"""
+
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
