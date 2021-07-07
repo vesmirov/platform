@@ -14,6 +14,7 @@ DEBUG = os.getenv('DEBUG', False)
 ALLOWED_HOSTS = [
     os.getenv('SERVER_IP'),
     'localhost',
+    '127.0.0.1',
     'web',
     os.getenv('SERVER_IP'),
     os.getenv('HOST'),

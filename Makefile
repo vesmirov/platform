@@ -2,7 +2,7 @@ runserver:
 	poetry run python manage.py runserver
 
 gunicorn:
-	poetry run yatube.wsgi:application -b 0:8000
+	poetry run gunicorn -b 0:8000 blog.wsgi
 
 makemigrations:
 	poetry run python manage.py makemigrations
