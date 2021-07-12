@@ -33,5 +33,5 @@ projectstatic/*
 db.sqlite3
 
 # other
-dump.json
+db.json
 .vscode
