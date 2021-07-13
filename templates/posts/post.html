@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+
+{% block title %}Post from {{post.published}}{% endblock %}
+
+{% block header %}{{ post.title }}{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col">
+      {% include 'include/post_card.html' %}
+      {% include 'include/post_comments.html' with form=comment_form comments=post.comments.all %}
+    </div>
+  </div>
+{% endblock %}

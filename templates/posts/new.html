@@ -2,7 +2,7 @@
 {% load user_filters %}
 
 {% block title %}
-  {% if note %}
+  {% if post %}
     Editing
   {% else %}
     Creating
@@ -10,10 +10,10 @@
 {% endblock title %}
 
 {% block header %}
-  {% if note %}
-    Edit note
+  {% if post %}
+    Edit post
   {% else %}
-    New note
+    New post
   {% endif %}
 {% endblock header %}
 
@@ -22,10 +22,10 @@
     <div class="col">
       <div class="card mx-3 mb-3 shadow-sm">
         <div class="card-header">
-          {% if note %}
-            Edit your note
+          {% if post %}
+            Edit this post
           {% else %}
-            Add a new note
+            Create a new post
           {% endif %}
         </div>
 
@@ -43,8 +43,8 @@
 
             {% for field in form %}
               <div class="form-group row" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
-                <label for="{{ field.id_for_label }}" class="col-md-4 col-form-label text-md-right">{{ field.label }}</label>
-                <div class="col-md-6">
+                <label for="{{ field.id_for_label }}" class="col-md-2 col-form-label text-md-right">{{ field.label }}</label>
+                <div class="col-md-8">
                   {{ field|addclass:"form-control" }}
 
                   {% if field.help_text %}
@@ -56,7 +56,7 @@
 
             <div class="col-md-6 offset-md-4">              
               <button type="submit" class="btn btn-primary">
-                {% if note %}
+                {% if post %}
                   Save
                 {% else %}
                   Publish

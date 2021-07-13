@@ -1,0 +1,20 @@
+{% extends "base.html" %} 
+
+{% block title %}Main page{% endblock %}
+
+{% block header %}Posts{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    {% for post in page_obj %}
+      <div class="col-sm-12 col-lg-6 mb-4">
+        {% include 'include/post_card_preview.html' %}
+      </div>
+      {% endfor %}
+  </div>
+  <div class="row justify-content-center">
+    {% if page_obj.has_other_pages %}
+      {% include 'include/paginator.html' with page=page_obj paginator=paginator%}
+    {% endif %}
+  </div>
+{% endblock content%}

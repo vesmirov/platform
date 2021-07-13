@@ -27,13 +27,13 @@ class Note(models.Model):
         return self.text[:12]
 
 
-class Comment(models.Model):
+class NoteComment(models.Model):
     """Comments for notes"""
 
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='comments'
+        related_name='notes_comments'
     )
     published = models.DateTimeField("date published", auto_now_add=True)
     text = models.TextField('text')

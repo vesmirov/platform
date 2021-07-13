@@ -6,28 +6,27 @@ from . import views
 app_name = 'notes'
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('notes/', views.NoteListView.as_view(), name='notes'),
-    path('notes/new/', views.NoteCreateView.as_view(), name='new'),
-    path('notes/<int:pk>/', views.NoteDetailView.as_view(), name='note'),
+    path('', views.NoteListView.as_view(), name='notes'),
+    path('new/', views.NoteCreateView.as_view(), name='new'),
+    path('<int:pk>/', views.NoteDetailView.as_view(), name='note'),
     path(
-        'notes/<int:pk>/edit/',
+        '<int:pk>/edit/',
         views.NoteUpdateView.as_view(),
         name='note_edit'
     ),
     path(
-        'notes/<int:pk>/delete/',
+        '<int:pk>/delete/',
         views.NoteDeleteView.as_view(),
         name='note_delete'
     ),
     path(
-        'notes/<int:pk>/comment/',
-        views.CommentCreateView.as_view(),
+        '<int:pk>/comment/',
+        views.NoteCommentCreateView.as_view(),
         name='comment_new'
     ),
     path(
-        'notes/<int:pk>/comment/<int:comment_pk>/delete/',
-        views.CommentDeleteView.as_view(),
+        '<int:pk>/comment/<int:comment_pk>/delete/',
+        views.NoteCommentDeleteView.as_view(),
         name='comment_delete'
     ),
 ]

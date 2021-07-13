@@ -1,3 +1,16 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Post, PostComment
+
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'published', 'author')
+    empty_value_display = '-empty-'
+
+
+class PostCommentAdmin(admin.ModelAdmin):
+    list_display = ('text', 'post', 'published', 'author')
+
+
+admin.site.register(Post, PostAdmin)
+admin.site.register(PostComment, PostCommentAdmin)

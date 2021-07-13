@@ -13,18 +13,11 @@ from django.views.generic import (
     RedirectView,
 )
 
-from .forms import NoteForm, CommentForm
-from .models import Note, Comment
+from .forms import NoteForm, NoteCommentForm
+from .models import Note, NoteComment
 from .permissions import AdminPermission
 
 User = get_user_model()
-
-
-class IndexView(RedirectView):
-    """Main page, which redirects to notes page for now"""
-
-    permanent = False
-    url = reverse_lazy('notes:notes')
 
 
 class NoteListView(ListView):
@@ -56,7 +49,7 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comment_form'] = CommentForm(self.request.POST or None)
+        context['comment_form'] = NoteCommentForm(self.request.POST or None)
         return context
 
 
@@ -86,11 +79,11 @@ class NoteDeleteView(LoginRequiredMixin, AdminPermission, DeleteView):
     success_url = reverse_lazy('notes:notes')
 
 
-class CommentCreateView(LoginRequiredMixin, CreateView):
+class NoteCommentCreateView(LoginRequiredMixin, CreateView):
     """Add a comment to note"""
 
-    model = Comment
-    form_class = CommentForm
+    model = NoteComment
+    form_class = NoteCommentForm
 
     def get_success_url(self):
         pk = self.kwargs['pk']
@@ -103,11 +96,11 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class CommentDeleteView(LoginRequiredMixin, View):
+class NoteCommentDeleteView(LoginRequiredMixin, View):
     """Delete comment"""
 
     def post(self, request, *args, **kwargs):
-        dataset = get_object_or_404(Comment, pk=kwargs['comment_pk'])
+        dataset = get_object_or_404(NoteComment, pk=kwargs['comment_pk'])
         dataset.delete()
         return redirect('notes:note', pk=kwargs['pk'])
 
@@ -115,7 +108,7 @@ class CommentDeleteView(LoginRequiredMixin, View):
         return redirect('notes:note', pk=kwargs['pk'])
 
     def dispatch(self, request, *args, **kwargs):
-        comment = get_object_or_404(Comment, pk=kwargs['comment_pk'])
+        comment = get_object_or_404(NoteComment, pk=kwargs['comment_pk'])
         if (self.request.user == comment.author
                 or self.request.user.is_superuser):
             return super().dispatch(request, *args, **kwargs)

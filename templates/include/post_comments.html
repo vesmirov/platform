@@ -1,0 +1,49 @@
+{% load user_filters %}
+
+{% load static %}
+
+<div class="row my-4">
+  <div class="col-sm-12 col-lg-6 mb-4">
+    {% if user.is_authenticated %} 
+      <div class="card">
+        <form action="{% url 'posts:comment_new' post.id %}" method="post">
+          {% csrf_token %}
+          <div class="card-header">
+            <span class="mr-3">Add a comment</span>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              {{ form.text|addclass:"form-control" }}
+            </div>
+            <button type="submit" class="btn btn-primary">Comment</button>
+          </div>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="col-sm-12 col-lg-6">
+    {% for comment in comments %}
+      <div class="card border-dark mb-3">
+        <div class="card-header border-bottom border-dark">
+          <div class="d-flex justify-content-between">
+            <span class="pr-3">{{ comment.author.get_full_name }}</span>
+            <span><span class="mr-3"><small>{{comment.published|date:"d.m.Y H:i"}}</span><span class='text-muted'>UTC</span></small></span>
+
+            {% if comment.author.username == user.username or user.is_admin %}
+              <form class="d-flex align-items-center" method="POST" enctype="multipart/form-data" action="{% url 'posts:comment_delete' pk=post.pk comment_pk=comment.pk %}">
+                {% csrf_token %}
+                <input type="image" width="15" src="{% static 'media/icons/close.png' %}">
+              </form>
+            {% endif %}
+
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ comment.text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+

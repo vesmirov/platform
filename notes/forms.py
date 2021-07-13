@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Note, Comment
+from .models import Note, NoteComment
 
 
 class NoteForm(forms.ModelForm):
@@ -17,9 +17,9 @@ class NoteForm(forms.ModelForm):
         }
 
 
-class CommentForm(forms.ModelForm):
+class NoteCommentForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = NoteComment
         fields = ('text',)
         labels = {'text': 'Text'}
         help_text = {'text': 'Comment text'}
