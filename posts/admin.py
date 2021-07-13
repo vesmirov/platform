@@ -4,7 +4,7 @@ from .models import Post, PostComment
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'published', 'author')
+    list_display = ('id', 'published', 'preview', 'author')
     empty_value_display = '-empty-'
 
 

@@ -6,13 +6,15 @@ from .models import Post, PostComment
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'text')
+        fields = ('title', 'preview', 'text')
         labels = {
             'title': 'Post title',
+            'preview': 'Post preview',
             'text': 'Post text',
         }
         help_text = {
             'title': 'Add your title',
+            'preview': 'Add your preview',
             'text': 'Add your text',
         }
         widgets = {'text': forms.Textarea(attrs={'cols': '70', 'rows': '20'})}

@@ -16,6 +16,7 @@ class Post(models.Model):
     )
     published = models.DateTimeField('date published', auto_now_add=True)
     title = models.CharField('post title', max_length=120)
+    preview = models.CharField('post title', max_length=200, blank=True)
     text = models.TextField('post text')
 
     class Meta:
