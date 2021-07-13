@@ -5,7 +5,9 @@ User = get_user_model()
 
 
 class Note(models.Model):
-    """Users notes"""
+    """
+        Users notes
+    """
 
     author = models.ForeignKey(
         User,
@@ -28,7 +30,9 @@ class Note(models.Model):
 
 
 class NoteComment(models.Model):
-    """Comments for notes"""
+    """
+        Comments for notes
+    """
 
     author = models.ForeignKey(
         User,

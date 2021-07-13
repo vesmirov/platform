@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
             'title': 'Add your title',
             'text': 'Add your text',
         }
-        widgets = {'text': forms.Textarea(attrs={'cols': '70', 'rows': '20'}),}
+        widgets = {'text': forms.Textarea(attrs={'cols': '70', 'rows': '20'})}
 
 
 class PostCommentForm(forms.ModelForm):

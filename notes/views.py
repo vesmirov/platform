@@ -10,7 +10,6 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
-    RedirectView,
 )
 
 from .forms import NoteForm, NoteCommentForm
@@ -21,7 +20,9 @@ User = get_user_model()
 
 
 class NoteListView(ListView):
-    """Latest notes"""
+    """
+        Latest notes
+    """
 
     model = Note
     template_name = 'notes/notes.html'
@@ -29,7 +30,9 @@ class NoteListView(ListView):
 
 
 class NoteCreateView(LoginRequiredMixin, AdminPermission, CreateView):
-    """Create a new note"""
+    """
+        Create a new note
+    """
 
     model = Note
     template_name = 'notes/new.html'
@@ -42,7 +45,9 @@ class NoteCreateView(LoginRequiredMixin, AdminPermission, CreateView):
 
 
 class NoteDetailView(LoginRequiredMixin, DetailView):
-    """Detail note with comments"""
+    """
+        Detail note with comments
+    """
 
     model = Note
     template_name = 'notes/note.html'
@@ -54,7 +59,9 @@ class NoteDetailView(LoginRequiredMixin, DetailView):
 
 
 class NoteUpdateView(LoginRequiredMixin, AdminPermission, UpdateView):
-    """Edit note"""
+    """
+        Edit note
+    """
 
     model = Note
     template_name = 'notes/new.html'
@@ -73,14 +80,18 @@ class NoteUpdateView(LoginRequiredMixin, AdminPermission, UpdateView):
 
 
 class NoteDeleteView(LoginRequiredMixin, AdminPermission, DeleteView):
-    """Delete note"""
+    """
+        Delete note
+    """
 
     model = Note
     success_url = reverse_lazy('notes:notes')
 
 
 class NoteCommentCreateView(LoginRequiredMixin, CreateView):
-    """Add a comment to note"""
+    """
+        Add a comment to note
+    """
 
     model = NoteComment
     form_class = NoteCommentForm
@@ -97,7 +108,9 @@ class NoteCommentCreateView(LoginRequiredMixin, CreateView):
 
 
 class NoteCommentDeleteView(LoginRequiredMixin, View):
-    """Delete comment"""
+    """
+        Delete comment
+    """
 
     def post(self, request, *args, **kwargs):
         dataset = get_object_or_404(NoteComment, pk=kwargs['comment_pk'])

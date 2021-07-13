@@ -2,7 +2,9 @@ import datetime as dt
 
 
 def dates(request):
-    """Adds current year, date and weekday"""
+    """
+        Adds current year, date and weekday
+    """
 
     year = dt.datetime.now().year
     today = dt.date.today()

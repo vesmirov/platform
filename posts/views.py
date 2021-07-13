@@ -49,7 +49,9 @@ class PostCreateView(LoginRequiredMixin, AdminPermission, CreateView):
 
 
 class PostDetailView(LoginRequiredMixin, DetailView):
-    """Detail post with comments"""
+    """
+        Detail post with comments
+    """
 
     model = Post
     template_name = 'posts/post.html'
@@ -61,7 +63,9 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 
 
 class PostUpdateView(LoginRequiredMixin, AdminPermission, UpdateView):
-    """Edit post"""
+    """
+        Edit post
+    """
 
     model = Post
     template_name = 'posts/new.html'
@@ -80,14 +84,18 @@ class PostUpdateView(LoginRequiredMixin, AdminPermission, UpdateView):
 
 
 class PostDeleteView(LoginRequiredMixin, AdminPermission, DeleteView):
-    """Delete post"""
+    """
+        Delete post
+    """
 
     model = Post
     success_url = reverse_lazy('posts:posts')
 
 
 class PostCommentCreateView(LoginRequiredMixin, CreateView):
-    """Add a comment to post"""
+    """
+        Add a comment to post
+    """
 
     model = PostComment
     form_class = PostCommentForm
@@ -104,7 +112,9 @@ class PostCommentCreateView(LoginRequiredMixin, CreateView):
 
 
 class PostCommentDeleteView(LoginRequiredMixin, View):
-    """Delete comment"""
+    """
+        Delete comment
+    """
 
     def post(self, request, *args, **kwargs):
         dataset = get_object_or_404(PostComment, pk=kwargs['comment_pk'])

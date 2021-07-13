@@ -5,7 +5,9 @@ User = get_user_model()
 
 
 class Post(models.Model):
-    """Users posts"""
+    """
+        Users posts
+    """
 
     author = models.ForeignKey(
         User,
@@ -26,7 +28,9 @@ class Post(models.Model):
 
 
 class PostComment(models.Model):
-    """Comments for post"""
+    """
+        Comments for post
+    """
 
     author = models.ForeignKey(
         User,
