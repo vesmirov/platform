@@ -14,7 +14,7 @@
           <form method="post">
             {% csrf_token %}
             <button class="btn btn-danger" type="submit">Yes</button>
-            <a href="{% url 'notes' %}" class="btn btn-primary">No</a>
+            <a href="{% url 'notes:notes' %}" class="btn btn-primary">No</a>
           </form>              
         </div>
       </div>

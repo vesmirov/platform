@@ -24,7 +24,7 @@ class IndexView(RedirectView):
     """Main page, which redirects to notes page for now"""
 
     permanent = False
-    url = reverse_lazy('notes')
+    url = reverse_lazy('notes:notes')
 
 
 class NoteListView(ListView):
@@ -41,7 +41,7 @@ class NoteCreateView(LoginRequiredMixin, AdminPermission, CreateView):
     model = Note
     template_name = 'notes/new.html'
     form_class = NoteForm
-    success_url = reverse_lazy('notes')
+    success_url = reverse_lazy('notes:notes')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -75,7 +75,7 @@ class NoteUpdateView(LoginRequiredMixin, AdminPermission, UpdateView):
 
     def get_success_url(self):
         pk = self.kwargs['pk']
-        success_url = reverse_lazy('note', kwargs={'pk': pk})
+        success_url = reverse_lazy('notes:note', kwargs={'pk': pk})
         return success_url
 
 
@@ -83,7 +83,7 @@ class NoteDeleteView(LoginRequiredMixin, AdminPermission, DeleteView):
     """Delete note"""
 
     model = Note
-    success_url = reverse_lazy('notes')
+    success_url = reverse_lazy('notes:notes')
 
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
@@ -94,7 +94,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         pk = self.kwargs['pk']
-        success_url = reverse_lazy('note', kwargs={'pk': pk})
+        success_url = reverse_lazy('notes:note', kwargs={'pk': pk})
         return success_url
 
     def form_valid(self, form):
@@ -109,10 +109,10 @@ class CommentDeleteView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         dataset = get_object_or_404(Comment, pk=kwargs['comment_pk'])
         dataset.delete()
-        return redirect('note', pk=kwargs['pk'])
+        return redirect('notes:note', pk=kwargs['pk'])
 
     def get(self, request, **kwargs):
-        return redirect('note', pk=kwargs['pk'])
+        return redirect('notes:note', pk=kwargs['pk'])
 
     def dispatch(self, request, *args, **kwargs):
         comment = get_object_or_404(Comment, pk=kwargs['comment_pk'])

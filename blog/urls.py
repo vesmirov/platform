@@ -19,7 +19,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('', include('notes.urls')),
+    path('', include('notes.urls', namespace='notes')),
 ]
 
 if settings.DEBUG:

@@ -30,7 +30,7 @@
         <div class="col-12 mb-3">
           <div class="list-group">
             {% for key, value in links.items %}
-              <a href="{{ value }}" class="list-group-item list-group-item-action d-flex align-items-center align-middle">
+              <a href="{{ value }}" target="_blank" rel="noopener noreferrer" class="list-group-item list-group-item-action d-flex align-items-center align-middle">
                 <svg class="bi flex-shrink-0 mr-4" width="16" height="16" role="img" aria-label="Info:"><use xlink:href="#{% if author %}person-add-icon{% else %}stack-icon{% endif %}"/></svg>
                 {{ key }}
               </a>

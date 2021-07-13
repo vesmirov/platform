@@ -1,4 +1,4 @@
-{% url 'notes' as url_notes %}
+{% url 'notes:notes' as url_notes %}
 
 {% with name=note.author.get_full_name %}
   <div class="card mb-4 shadow-sm">
@@ -15,11 +15,11 @@
           <svg class="bi flex-shrink-0 mr-2" width="16" height="16" role="img" aria-label="Info:"><use xlink:href="#calendar-icon"/></svg>
           <span class="mr-2">{{note.published|date:"d.m.y \a\t H:i"}}</span><span class='mr-4 text-muted'>UTC</span>
           {% if request.path == url_notes %}
-            <a class="btn btn-sm btn-outline-dark" href="{% url 'note' note.id %}">comment</a>
+            <a class="btn btn-sm btn-outline-dark" href="{% url 'notes:note' note.id %}">comment</a>
           {% else %}
             {% if user.username == note.author.username %}
-              <a class="mr-3 btn btn-sm btn-outline-dark" href="{% url 'note_edit' note.id %}">Edit</a>
-              <a class="mr-0 r-md-3 btn btn-sm btn-outline-danger" href="{% url 'note_delete' note.id %}">Delete</a>
+              <a class="mr-3 btn btn-sm btn-outline-dark" href="{% url 'notes:note_edit' note.id %}">Edit</a>
+              <a class="mr-0 r-md-3 btn btn-sm btn-outline-danger" href="{% url 'notes:note_delete' note.id %}">Delete</a>
             {% endif %}
           {% endif %}
         </div>
