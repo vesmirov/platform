@@ -20,7 +20,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('', include('posts.urls', namespace='posts')),
-    path('notes', include('notes.urls', namespace='notes')),
+    path('notes/', include('notes.urls', namespace='notes')),
 ]
 
 if settings.DEBUG:
