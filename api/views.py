@@ -1,21 +1,18 @@
-from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
-from rest_framework.permissions import IsAuthenticated
 
 from .serializers import (
     NoteSerializer,
     NoteDetailSerializer,
     PostSerializer,
     PostDetailSerializer,
-    UserSerializer,
 )
 from .permissions import AdminPermission
 
-from notes.models import Note, NoteComment
-from posts.models import Post, PostComment
+from notes.models import Note
+from posts.models import Post
 
 
 class PostListCreate(ListCreateAPIView):
