@@ -1,37 +1,64 @@
 from django.shortcuts import get_object_or_404, get_list_or_404
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.generics import (
+    ListCreateAPIView,
+    RetrieveUpdateDestroyAPIView,
+)
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import (
     NoteSerializer,
-    NoteCommentSerializer,
+    NoteDetailSerializer,
     PostSerializer,
-    PostCommentSerializer,
+    PostDetailSerializer,
     UserSerializer,
 )
+from .permissions import AdminPermission
 
 from notes.models import Note, NoteComment
 from posts.models import Post, PostComment
 
 
-class NoteAPIView(APIView):
-    def get(self, request):
-        notes = Note.objects.all()
-        serializer = NoteSerializer(notes, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
-    
-    def post(self, request):
-        serializer = NoteSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(author=self.request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class PostListCreate(ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = (AdminPermission,)
+        return super(PostListCreate, self).get_permissions()
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
-class NoteDetailAPIView(APIView):
-    def get(self, request, pk):
-        note = get_object_or_404(Note, pk=pk)
-        serializer = NoteSerializer(note)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+class PostRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostDetailSerializer
 
+    def get_permissions(self):
+        if self.request.method in ('PUT', 'PATCH'):
+            self.permission_classes = (AdminPermission,)
+        return super(PostRetrieveUpdateDestroy, self).get_permissions()
+
+
+class NoteListCreate(ListCreateAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+
+    def get_permissions(self):
+        if self.request.method == 'POST':
+            self.permission_classes = (AdminPermission,)
+        return super(NoteListCreate, self).get_permissions()
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class NoteRetrieveUpdateDestroy(RetrieveUpdateDestroyAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteDetailSerializer
+
+    def get_permissions(self):
+        if self.request.method in ('PUT', 'PATCH'):
+            self.permission_classes = (AdminPermission,)
+        return super(NoteRetrieveUpdateDestroy, self).get_permissions()

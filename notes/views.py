@@ -19,7 +19,7 @@ from .permissions import AdminPermission
 User = get_user_model()
 
 
-class NoteListView(ListView):
+class NoteListView(AdminPermission, ListView):
     """
         Latest notes
     """
