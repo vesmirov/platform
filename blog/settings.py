@@ -120,6 +120,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+LOG_DIR = os.path.join(BASE_DIR, 'logs')
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'projectstatic')]
@@ -135,3 +137,47 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_PORT', '587')
 EMAIL_USE_TLS = os.getenv('EMAIL_TLS')
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'simple_formatter': {
+            'format': (
+                '[%(levelname)s][%(asctime)s]: logger: %(name)s; '
+                'message%(message)s'
+            )
+        },
+    },
+
+    'handlers': {
+        'stream_handler': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple_formatter',
+        },
+        'file_handler': {
+            'class': 'logging.FileHandler',
+            'filename': str(os.path.join(LOG_DIR, 'blog.log')),
+            'formatter': 'simple_formatter',
+        },
+        'telegram_handler': {
+            'class': 'blog.handlers.TelegramBotHandler',
+            'token': os.getenv('TELEGRAM_TOKEN'),
+            'chat_id': os.getenv('TELEGRAM_USER_ID'),
+            'formatter': 'simple_formatter',
+        },
+    },
+
+    'loggers': {
+        'django': {
+            'handlers': ('file_handler',),
+            'level': 'INFO',
+        },
+        'django.security': {
+            'handlers': ('telegram_handler',),
+            'level': 'INFO',
+            'propagate': True,
+        }
+    },
+}

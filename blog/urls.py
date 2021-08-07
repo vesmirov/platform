@@ -19,8 +19,8 @@ urlpatterns = [
 
 urlpatterns += [
     path('api/', include('api.urls')),
-    path('', include('posts.urls', namespace='posts')),
     path('notes/', include('notes.urls', namespace='notes')),
+    path('', include('posts.urls', namespace='posts')),
 ]
 
 if settings.DEBUG:

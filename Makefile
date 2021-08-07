@@ -16,5 +16,8 @@ collectstatic:
 createsuperuser:
 	poetry run python manage.py createsuperuser
 
+shell:
+	poetry run python manage.py shell
+
 lint:
 	poetry run flake8

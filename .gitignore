@@ -6,6 +6,11 @@ venv/
 .venv/
 .env
 
+# logs
+.logs
+logs/*
+!logs/.gitkeep
+
 # cache
 __pycache__/
 *.py[cod]
