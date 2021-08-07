@@ -6,9 +6,27 @@
 
 {% block content %}
   <div class="row justify-content-center">
-    <div class="col">
+    <div class="col-sm-12 col-lg-8">
       {% include 'include/note_card.html' %}
-      {% include 'include/note_comments.html' with form=comment_form comments=note.comments.all %}
     </div>
+
+    <div class="col-12 col-lg-4 ">
+      <div class="row mb-4">
+        {% if user.is_authenticated %}
+          <div class="col-12 mb-4">
+            {% url 'notes:comment_new' note.id as create_comment_url%}
+            {% include 'include/comment_form.html' with form=comment_form create_comment_url=create_comment_url%}
+          </div>
+        {% endif %}
+      
+        <div class="col-12">
+          {% for comment in note.comments.all %}
+            {% url 'notes:comment_delete' pk=note.pk comment_pk=comment.pk as delete_comment_url%}
+            {% include 'include/comment_card.html' with comment=comment delete_comment_url=delete_comment_url %}
+          {% endfor %}
+        </div>
+      </div>      
+    </div>
+
   </div>
 {% endblock %}

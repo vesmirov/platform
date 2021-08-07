@@ -5,8 +5,8 @@
 {% block header %}Last notes{% endblock %}
 
 {% block content %}
-  <div class="row justify-content-center">
-    <div class="col">
+  <div class="row justify-content-center justify-content-lg-start">
+    <div class="col-12 col-lg-8">
       {% for note in page_obj %}
         {% include 'include/note_card.html' %}
       {% endfor %}

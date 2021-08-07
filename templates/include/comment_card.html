@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="card border-dark mb-3">
+  <div class="card-header border-bottom border-dark">
+    <div class="d-flex justify-content-between">
+      <span class="pr-3">@{{ comment.author.username }}</span>
+      <span><span class="mr-3"><small>{{comment.published|date:"d.m.Y H:i"}}</span><span class='text-muted'>UTC</span></small></span>
+
+      {% if comment.author.username == user.username or user.is_admin %}
+        <form class="d-flex align-items-center" method="POST" enctype="multipart/form-data" action="{{ delete_comment_url }}">
+          {% csrf_token %}
+          <input type="image" width="15" src="{% static 'media/icons/close.png' %}">
+        </form>
+      {% endif %}
+
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ comment.text }}</p>
+  </div>
+</div>

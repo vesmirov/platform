@@ -6,15 +6,9 @@ from .models import Note, NoteComment
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = ('text_ru', 'text_en')
-        labels = {
-            'text_ru': 'Russian text',
-            'text_en': 'English text',
-        }
-        help_text = {
-            'text_ru': 'Add russian text',
-            'text_en': 'Add english text',
-        }
+        fields = ('text_ru',)
+        labels = {'text_ru': 'Russian text'}
+        help_text = {'text_ru': 'Add russian text'}
 
 
 class NoteCommentForm(forms.ModelForm):

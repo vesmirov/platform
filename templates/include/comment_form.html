@@ -1,0 +1,16 @@
+{% load user_filters %}
+
+<div class="card">
+  <form action="{{ create_comment_url }}" method="post">
+    {% csrf_token %}
+    <div class="card-header">
+      <span class="mr-3">Add a comment</span>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        {{ form.text|addclass:"form-control" }}
+      </div>
+      <button type="submit" class="btn btn-primary">Comment</button>
+    </div>
+  </form>
+</div>

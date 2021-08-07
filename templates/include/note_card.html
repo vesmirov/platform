@@ -3,17 +3,6 @@
 {% with name=note.author.get_full_name %}
   <div class="card mb-4 shadow-sm">
     <div class="card-header">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-calendar3 d-none" viewBox="0 0 16 16">
-        <symbol id="calendar-icon" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-          <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-        </symbol>
-        <symbol id="comment-icon" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-          <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-        </symbol>
-      </svg>
-
       <div class="d-flex justify-content-between">
         <div class="d-flex align-items-center align-middle">
           <svg class="bi flex-shrink-0 mr-2" width="16" height="16" role="img" aria-label="Info:"><use xlink:href="#calendar-icon"/></svg>
@@ -35,11 +24,8 @@
     </div>
 
     <div class="card-body">
-      <div class="row row-cols-6 row-cols-lg-2">
-        <div class="card-text col-sm-12 col-lg-6 pb-3">
-          {{ note.text_en|safe|linebreaksbr }}
-        </div>
-        <div class="card-text col-sm-12 col-lg-6 text-muted">
+      <div class="row">
+        <div class="card-text col-12 text-muted">
           {{ note.text_ru|safe|linebreaksbr }}
         </div>
       </div>
