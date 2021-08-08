@@ -5,12 +5,15 @@
 {% block header %}Posts{% endblock %}
 
 {% block content %}
-  <div class="row justify-content-center">
-    {% for post in page_obj %}
-      <div class="col-sm-12 col-lg-6 mb-4">
+  <div class="row justify-content-center justify-content-lg-start">
+    <div class="col-sm-12 col-lg-8">
+      {% for post in page_obj %}
         {% include 'include/post_card_preview.html' %}
-      </div>
       {% endfor %}
+    </div>
+    <div class="col-sm-12 col-lg-4">
+      {% include 'include/sidebar.html' %}
+    </div>
   </div>
   <div class="row justify-content-center">
     {% if page_obj.has_other_pages %}

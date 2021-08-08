@@ -48,7 +48,7 @@ class PostCreateView(LoginRequiredMixin, AdminPermission, CreateView):
         return super().form_valid(form)
 
 
-class PostDetailView(LoginRequiredMixin, DetailView):
+class PostDetailView(DetailView):
     """
         Detail post with comments
     """

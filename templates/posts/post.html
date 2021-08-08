@@ -8,7 +8,23 @@
   <div class="row justify-content-center">
     <div class="col">
       {% include 'include/post_card.html' %}
-      {% include 'include/post_comments.html' with form=comment_form comments=post.comments.all %}
+      <div class="row my-4">
+        <div class="col-sm-12 col-lg-6">
+          {% for comment in post.comments.all %}
+            {% url 'posts:comment_delete' pk=post.pk comment_pk=comment.pk as delete_comment_url%}
+            {% include 'include/comment_card.html' with comment=comment delete_comment_url=delete_comment_url %}
+          {% endfor %}
+        </div>
+      
+        <div class="col-sm-12 col-lg-6 mb-4">
+          {% if user.is_authenticated %}
+          <div class="col-12 mb-4 px-0">
+            {% url 'posts:comment_new' post.id as create_comment_url%}
+            {% include 'include/comment_form.html' with form=comment_form create_comment_url=create_comment_url%}
+          </div>
+         {% endif %}
+        </div>
+      </div>      
     </div>
   </div>
 {% endblock %}
