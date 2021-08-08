@@ -1,7 +1,7 @@
 {% url 'posts:posts' as url_posts %}
 
 {% with name=post.author.get_full_name %}
-  <div class="card shadow-sm">
+  <div class="card shadow-sm mb-4">
     <div class="card-header">
       <div class="d-flex justify-content-between">
         <div class="d-flex align-items-center align-middle">
@@ -9,7 +9,7 @@
           <span class="mr-5">{{post.published|date:"d M Y"}}</span>
           <a class="btn btn-sm btn-outline-dark d-flex align-items-center" href="{% url 'posts:post' post.id %}">
             <svg class="bi flex-shrink-0 mr-2" width="16" height="16" role="img" aria-label="Info:"><use xlink:href="#open-icon"/></svg>
-            open post
+            view post
           </a>
         </div>
         <span class="text-muted d-none d-md-inline">{{ name }}</span>
