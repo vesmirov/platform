@@ -40,3 +40,5 @@ db.sqlite3
 # other
 db.json
 .vscode
+*.http
+
