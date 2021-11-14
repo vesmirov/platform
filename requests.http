@@ -1,6 +1,0 @@
-POST http://127.0.0.1:8000/api/get-token/
-Content-Type: application/json
-{
-    "username": "vilagov",
-    "password": "NsgfwdeuW4fwEDXMsozHX6BCE-98.9a"
-}
