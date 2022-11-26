@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "blog"
+name = "platform"
 version = "0.1.0"
 description = ""
-authors = ["Evan <evan.vilagov@gmail.com>"]
+authors = ["Evan <evan.vesmirov@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
