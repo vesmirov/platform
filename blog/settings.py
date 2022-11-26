@@ -160,12 +160,6 @@ LOGGING = {
             'filename': str(os.path.join(LOG_DIR, 'blog.log')),
             'formatter': 'simple_formatter',
         },
-        'telegram_handler': {
-            'class': 'blog.handlers.TelegramBotHandler',
-            'token': os.getenv('TELEGRAM_TOKEN'),
-            'chat_id': os.getenv('TELEGRAM_USER_ID'),
-            'formatter': 'simple_formatter',
-        },
     },
 
     'loggers': {
@@ -173,10 +167,5 @@ LOGGING = {
             'handlers': ('file_handler',),
             'level': 'INFO',
         },
-        'django.security': {
-            'handlers': ('telegram_handler',),
-            'level': 'INFO',
-            'propagate': True,
-        }
     },
 }
