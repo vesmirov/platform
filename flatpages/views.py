@@ -9,15 +9,15 @@ class AuthorPage(TemplateView):
     template_name = 'flatpages/about.html'
     extra_context = {
         'author': True,
-        'title': 'Evan Vilagov',
+        'title': 'Evan Vesmirov',
         'content_title': 'About author',
         'links': {
-            'Github': 'https://www.github.com/vilagov/',
-            'Linkedin': 'https://www.linkedin.com/in/vilagov/',
-            'Instagram': 'https://www.instagram.com/evan.vilagov/',
-            'Facebook': 'https://www.facebook.com/vilagov/',
+            'Github': 'https://www.github.com/vesmirov/',
+            'Linkedin': 'https://www.linkedin.com/in/vesmirov/',
+            'Instagram': 'https://www.instagram.com/evan.vesmirov/',
+            'Facebook': 'https://www.facebook.com/vesmirov/',
         },
-        'email': 'evan.vilagov@gmail.com',
+        'email': 'evan.vesmirov@gmail.com',
         'text_ru': TEXT_RU,
         'text_en': TEXT_EN,
     }

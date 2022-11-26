@@ -1,10 +1,9 @@
-# Vilagov Blog
-![Blog CI](https://github.com/vilagov/blog/workflows/Blog%20CI/badge.svg)
+# Platform
+![Platform CI](https://github.com/vesmirov/platform/workflows/Platform%20CI/badge.svg)
 
 ## Description
 
-My personal blog. Daily (or almost daily) notes about life, programming and some other stuff.
-Admin users can create, edit and delete notes, registered users can leave comments.
+TODO
 
 ## Improvement plans
 
@@ -24,8 +23,8 @@ Admin users can create, edit and delete notes, registered users can leave commen
 
 ## Author
 
-Evan Vilagov
+Evan Vesmirov
 
-Linkedin: https://www.linkedin.com/in/vilagov/
+Linkedin: https://www.linkedin.com/in/vesmirov/
 
-Email: evan.vilagov@gmail.com
+Email: evan.vesmirov@gmail.com
