@@ -157,17 +157,6 @@ mccabe = ">=0.6,<0.7"
 toml = ">=0.7.1"
 
 [[package]]
-name = "python-dotenv"
-version = "0.17.1"
-description = "Read key-value pairs from a .env file and set them as environment variables"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.extras]
-cli = ["click (>=5.0)"]
-
-[[package]]
 name = "pytz"
 version = "2021.1"
 description = "World timezone definitions, modern and historical"
@@ -215,7 +204,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "c87c6174578e2c9e6e22b58d0475d70526105b3095b595d12842b61a8dda2986"
+content-hash = "e02bd6382d8e5a755e3609da3ab052aa3fc81a77239fb7536506610200fdb528"
 
 [metadata.files]
 asgiref = [
@@ -327,10 +316,6 @@ pyflakes = [
 pylint = [
     {file = "pylint-2.8.3-py3-none-any.whl", hash = "sha256:792b38ff30903884e4a9eab814ee3523731abd3c463f3ba48d7b627e87013484"},
     {file = "pylint-2.8.3.tar.gz", hash = "sha256:0a049c5d47b629d9070c3932d13bff482b12119b6a241a93bc460b0be16953c8"},
-]
-python-dotenv = [
-    {file = "python-dotenv-0.17.1.tar.gz", hash = "sha256:b1ae5e9643d5ed987fc57cc2583021e38db531946518130777734f9589b3141f"},
-    {file = "python_dotenv-0.17.1-py2.py3-none-any.whl", hash = "sha256:00aa34e92d992e9f8383730816359647f358f4a3be1ba45e5a5cefd27ee91544"},
 ]
 pytz = [
     {file = "pytz-2021.1-py2.py3-none-any.whl", hash = "sha256:eb10ce3e7736052ed3623d49975ce333bcd712c7bb19a58b9e2089d4057d0798"},

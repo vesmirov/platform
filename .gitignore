@@ -1,10 +1,14 @@
+# secrets
+# TODO setup vault encryption
+postgres.env
+platform.env
+
 # environment
 .git/*
 env/
 venv/
 .venv
 .venv/
-.env
 
 # logs
 .logs
