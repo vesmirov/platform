@@ -1,3 +1,10 @@
+# A template of docker-compose configuration file.
+# Copy as `docker-compose.yaml` and setup for local usage.
+#
+# BASH: `$ cp docker-compose.template.yaml docker-compose.yaml`
+#
+# Any changes of this configuration file must be taken into account on the production server
+
 version: "3.8"
 
 volumes:
@@ -21,7 +28,9 @@ services:
       - staticfiles:/code/static
       - mediafiles:/code/media
       - .:/code
-    env_file: ./platform.env
+    env_file:
+      - ./platform.env
+      - ./postgres.env
 
   nginx:
     image: nginx:1.23.2
