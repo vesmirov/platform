@@ -1,10 +1,9 @@
- """
-A template of docker-compose configuration file.
-Copy as `docker-compose.yaml` and setup for local usage.
-
-# BASH
-$ cp docker-compose.template.yaml docker-compose.yaml
-"""
+# A template of docker-compose configuration file.
+# Copy as `docker-compose.yaml` and setup for local usage.
+#
+# BASH: `$ cp docker-compose.template.yaml docker-compose.yaml`
+#
+# Any changes of this configuration file must be taken into account on the production server
 
 version: "3.8"
 
