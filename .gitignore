@@ -3,6 +3,9 @@
 postgres.env
 platform.env
 
+# docker
+docker-compose.yaml
+
 # environment
 .git/*
 env/
@@ -38,11 +41,8 @@ projectstatic/*
 !projectstatic/bootstrap.zip
 !projectstatic/media
 
-# db
-db.sqlite3
 
 # other
 db.json
 .vscode
 *.http
-
