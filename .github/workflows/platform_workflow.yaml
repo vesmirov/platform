@@ -1,7 +1,9 @@
 name: Platform CI
 
 on:
-  push: [22-configure-base-ci]
+  push:
+    branches:
+      - 22-configure-base-ci
 
 jobs:
   dockerhub:
