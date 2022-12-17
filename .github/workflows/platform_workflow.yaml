@@ -7,7 +7,7 @@ jobs:
   dockerhub:
     name: Push image to DockerHub
     runs-on: ubuntu-latest
-#    if: github.ref == 'refs/heads/22-configure-base-ci'
+    if: github.ref == 'refs/heads/22-configure-base-ci'
     steps:
       - run: echo ${{github.ref}}
 #      - name: Checkout
