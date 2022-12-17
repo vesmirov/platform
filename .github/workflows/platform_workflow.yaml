@@ -1,7 +1,9 @@
 name: Platform CI
 
 on:
-  push
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   dockerhub:
