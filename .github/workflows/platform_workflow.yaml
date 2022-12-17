@@ -2,13 +2,12 @@ name: Platform CI
 
 on:
   push:
-    branches:
-      - 'main'
     tags:
       - 'v*'
 
 jobs:
   dockerhub:
+    if: github.ref == 'refs/heads/22-configure-base-ci'
     name: Push image to DockerHub
     runs-on: ubuntu-latest
     steps:
