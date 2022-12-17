@@ -9,7 +9,7 @@ jobs:
   dockerhub:
     name: Push image to DockerHub
     runs-on: ubuntu-latest
-    echo: ${GITHUB_REF##*/}
+    run: echo ${GITHUB_REF##*/}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
