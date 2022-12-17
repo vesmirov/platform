@@ -1,14 +1,13 @@
 name: Platform CI
 
 on:
-  push:
-    tags:
-      - 'v*'
+  push: [22-configure-base-ci]
 
 jobs:
   dockerhub:
     name: Push image to DockerHub
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
     steps:
       - run: echo ${{github.ref}}
 
