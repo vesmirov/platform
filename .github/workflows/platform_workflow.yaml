@@ -1,9 +1,7 @@
 name: Platform CI
 
 on:
-  push:
-    branches:
-      - 'main'
+  push
 
 jobs:
   dockerhub:
